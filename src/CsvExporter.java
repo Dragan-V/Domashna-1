@@ -7,11 +7,10 @@ public class CsvExporter {
         try (FileWriter fileWriter = new FileWriter(fileName)) {
             fileWriter.append("Name,Address,Rating,Location\n");
             for (WineryInfo info : wineryData) {
-                fileWriter.append("\"").append(info.name).append("\",");
-                fileWriter.append("\"").append(info.address).append("\",");
-                fileWriter.append("\"").append(String.valueOf(info.rating)).append("\",");
-
-                fileWriter.append("\"").append(info.location.toString()).append("\"\n");
+                fileWriter.append(info.name).append(",");
+                fileWriter.append(info.address).append(",");
+                fileWriter.append(String.valueOf(info.rating)).append(",");
+                fileWriter.append(info.location.toString()).append("\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
