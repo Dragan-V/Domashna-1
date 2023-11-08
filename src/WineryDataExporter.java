@@ -33,7 +33,8 @@ public class WineryDataExporter {
                         .radius(radii[i]);
                 PlacesSearchResponse response = request.await();
                 for (PlacesSearchResult result : response.results) {
-                    allWineryData.add(new WineryInfo(result.name, result.formattedAddress, result.geometry.location));
+                  //  System.out.println(result.rating);
+                    allWineryData.add(new WineryInfo(result.name, result.formattedAddress, result.geometry.location,result.rating));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
