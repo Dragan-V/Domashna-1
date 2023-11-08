@@ -7,8 +7,9 @@ public class CsvExporter {
         try (FileWriter fileWriter = new FileWriter(fileName)) {
             fileWriter.append("Name,Address,Rating,Location\n");
             for (WineryInfo info : wineryData) {
+                String address = info.address.replace(",", "-");
                 fileWriter.append(info.name).append(",");
-                fileWriter.append(info.address).append(",");
+                fileWriter.append(address).append(",");
                 fileWriter.append(String.valueOf(info.rating)).append(",");
                 fileWriter.append(info.location.toString()).append("\n");
             }
