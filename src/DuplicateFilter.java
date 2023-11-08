@@ -17,8 +17,14 @@ public class DuplicateFilter {
 
             while ((line = reader.readLine()) != null) {
                 if (uniqueEntries.add(line)) {
-                    writer.write(line);
-                    writer.newLine();
+                    if (line.contains("North Macedonia")) {
+                        writer.write(line);
+                        writer.newLine();
+                    }
+//                    else{
+//                        System.out.println(line);
+//                    }
+
                 }
             }
 
