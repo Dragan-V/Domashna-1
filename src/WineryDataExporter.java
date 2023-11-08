@@ -4,12 +4,9 @@ import com.google.maps.TextSearchRequest;
 import com.google.maps.model.PlacesSearchResponse;
 import com.google.maps.model.PlacesSearchResult;
 import com.google.maps.model.LatLng;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import io.github.cdimascio.dotenv.Dotenv;
-import java.io.FileWriter;
-import java.io.Writer;
 
 
 public class WineryDataExporter {
@@ -18,7 +15,6 @@ public class WineryDataExporter {
         String apiKey = dotenv.get("GOOGLE_MAPS_API_KEY");
         GeoApiContext context = new GeoApiContext.Builder().apiKey(apiKey).build();
 
-        // Define an array of locations and radii
         LatLng[] locations = {
                 new LatLng(41.25303, 21.27507),
                 new LatLng(41.52297, 22.35999),
@@ -30,7 +26,6 @@ public class WineryDataExporter {
 
         List<WineryInfo> allWineryData = new ArrayList<>();
 
-        // Create a loop to iterate through locations and radii
         for (int i = 0; i < locations.length; i++) {
             try {
                 TextSearchRequest request = PlacesApi.textSearchQuery(context, "wineries")
@@ -45,10 +40,9 @@ public class WineryDataExporter {
             }
         }
 
-        // Save all the data to a single CSV file
         CsvExporter.saveDataToCsvFile(allWineryData, "all_winery_data.csv");
         System.out.println("all_winery_data.csv e kreirano");
-        CsvUtil.copyUniqueEntries("all_winery_data.csv", "unique_winery_data.csv");
+        DuplicateFilter.duplicateFilter("all_winery_data.csv", "unique_winery_data.csv");
 
     }
 }
