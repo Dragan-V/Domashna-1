@@ -8,10 +8,12 @@ public class CsvExporter {
             fileWriter.append("Name,Address,Rating,Location\n");
             for (WineryInfo info : wineryData) {
                 String address = info.address.replace(",", "-");
+                String location = info.location.toString().replace(",", "-");
+
                 fileWriter.append(info.name).append(",");
                 fileWriter.append(address).append(",");
                 fileWriter.append(String.valueOf(info.rating)).append(",");
-                fileWriter.append(info.location.toString()).append("\n");
+                fileWriter.append(location).append("\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
