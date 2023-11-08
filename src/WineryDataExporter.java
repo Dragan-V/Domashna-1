@@ -34,7 +34,7 @@ public class WineryDataExporter {
                 PlacesSearchResponse response = request.await();
                 for (PlacesSearchResult result : response.results) {
                   //  System.out.println(result.rating);
-                    allWineryData.add(new WineryInfo(result.name, result.formattedAddress, result.geometry.location,result.rating));
+                    allWineryData.add(new WineryInfo(result.name, result.formattedAddress, result.geometry.location,result.rating,result.userRatingsTotal));
                 }
             } catch (Exception e) {
                 e.printStackTrace();

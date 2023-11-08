@@ -14,7 +14,7 @@ public class DuplicateFilter {
 
             String line;
             Set<String> uniqueEntries = new HashSet<>();
-            writer.append("Name, Address, Rating, Location\n");
+            writer.append("Name, Address, Rating, Number of Ratings, Location\n");
             while ((line = reader.readLine()) != null) {
                 if (uniqueEntries.add(line)) {
                     if (line.contains("North Macedonia")) {
