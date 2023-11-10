@@ -49,7 +49,7 @@ public class WineryDataExporter {
                 e.printStackTrace();
             }
         }
-
+        QuoteFilter.quoteFilter(allWineryData);
         CsvExporter.saveDataToCsvFile(allWineryData, "all_winery_data.csv");
         System.out.println("all_winery_data.csv e kreirano");
         DuplicateFilter.duplicateFilter("all_winery_data.csv", "unique_winery_data.csv");
